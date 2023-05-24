@@ -2,7 +2,7 @@ from ultralytics import YOLO
 
 
 def detection():
-    model = YOLO("yolov8n.pt")
+    model = YOLO("yolov8m.pt")
 
     results = model.predict("src/image/image.jpg")
 
