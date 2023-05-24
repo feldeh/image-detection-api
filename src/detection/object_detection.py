@@ -1,20 +1,31 @@
 from ultralytics import YOLO
 
-def YOLOO():
+
+def detection():
     model = YOLO("yolov8n.pt")
 
-    results = model.predict("../image/image.jpg")
+    results = model.predict("src/image/image.jpg")
 
     result = results[0]
 
+    bboxes = []
 
-    print(result.boxes)
-    box = result.boxes[0]
+    for box in result.boxes:
+        class_name = result.names[box.cls[0].item()]
+        coordinates = box.xyxy[0].tolist()
+        coordinates = [round(x) for x in coordinates]
+        confidence = round(box.conf[0].item(), 2)
 
+        print("Object type:", class_name)
+        print("Coordinates:", coordinates)
+        print("Confidence:", confidence)
+        print("___")
 
-    print("Object type:", box.cls)
-    print("Coordinates:", box.xyxy)
-    print("Probability:", box.conf)
-    # print("Inference speed:", )
+        dic = {
+            "Object type": class_name,
+            "Coordinates": coordinates,
+            "Confidence": confidence
+        }
+        bboxes.append(dic)
 
-    return results
+    return bboxes
