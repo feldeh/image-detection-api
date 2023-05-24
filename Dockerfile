@@ -6,6 +6,8 @@ COPY ./requirements.txt /image-detection/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /image-detection/requirements.txt
 
+RUN pip install --no-cache-dir --upgrade opencv-python-headless
+
 COPY ./src /image-detection/src
 
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
