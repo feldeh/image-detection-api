@@ -1,6 +1,6 @@
 # Image Detection using YOLO and FastAPI
 
-This project aims to provide a REST API server for detecting objects in an image using the YOLOv8 (You Only Look Once) algorithm implemented by Ultralytics. It uses a pre-trained model to recognize objects in images, then outputs the object type, its coordinates and confidence score.
+This project provides a REST API server for detecting objects in an image using the YOLOv8 (You Only Look Once) object detection model implemented by Ultralytics. It uses a pre-trained model to recognize objects in images, then outputs the object type, its coordinates and confidence score.
 
 ## Getting Started
 
@@ -48,3 +48,8 @@ The detection function returns a list of detected objects in the image. Each obj
 - [FastAPI](https://fastapi.tiangolo.com/) - Web framework used to build the API.
 - [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) - Object detection model.
 - [OpenCV](https://opencv.org/) - Used for image processing.
+
+## Roadmap
+
+- [ ] Enhance the object detection API endpoint to return an image with drawn bounding boxes, object types, and confidence scores.
+- [ ] Integrate a front-end user interface to interactively use the API and visualize the results.
