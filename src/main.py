@@ -1,6 +1,6 @@
 from fastapi import FastAPI, status
 
-from .detection.object_detection import detection
+from .detection.detect_objects import detect_objects
 
 app = FastAPI()
 
@@ -11,6 +11,6 @@ async def root():
 
 
 @app.get("/api", status_code=status.HTTP_200_OK)
-async def detection_get():
-    result = detection()
+async def objects_get():
+    result = detect_objects()
     return result

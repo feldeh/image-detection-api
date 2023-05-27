@@ -1,5 +1,6 @@
 __pycache__/
 .env
 *.pt
-test
+*.jpg
+test*
 image/

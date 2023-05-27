@@ -1,6 +1,6 @@
 services:
   app:
-    platform: linux/amd64
+    platform: linux/arm64/v8
     build: .
     container_name: fastapi-server
     command: uvicorn src.main:app --host 0.0.0.0 --port 80 --reload
