@@ -1,6 +1,5 @@
-from fastapi import FastAPI, status
-
-from .detection.detect_objects import detect_objects
+from fastapi import FastAPI, status, UploadFile, File
+from src.routes import upload
 
 app = FastAPI()
 
@@ -9,8 +8,4 @@ app = FastAPI()
 async def root():
     return "Ready"
 
-
-@app.get("/api", status_code=status.HTTP_200_OK)
-async def objects_get():
-    result = detect_objects()
-    return result
+app.include_router(upload.router)

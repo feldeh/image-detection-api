@@ -1,18 +1,24 @@
 from ultralytics import YOLO
 import cv2 as cv
 import numpy as np
+import uuid
 
+import os
 
-def annotate_objects():
-    model = YOLO("yolov8m.pt")
+ANNOTATEDDIR = "src/images/annotated/"
 
-    img = cv.imread("../image/image.jpg")
+def process_image(image_path):
 
-    results = model.predict("../image/image.jpg")
+    model = YOLO("src/models/yolov8m.pt")
+
+    results = model.predict(image_path)
     result = results[0]
 
+    img = cv.imread(image_path)
+
+
     classes = np.array(result.boxes.cls, dtype="int")
-    class_names = np.array([x.upper() for x in list(result.names.values())])
+    class_names = np.array(list(result.names.values()))
 
 
     bboxes = np.array(result.boxes.xyxy, dtype="int")
@@ -27,4 +33,7 @@ def annotate_objects():
         cv.putText(img, str(conf), (x2 - 30, y - 5), cv.FONT_HERSHEY_PLAIN, 1, (0, 0, 255), 2)
 
 
-    cv.imwrite('bboxed_img.jpg', img)
+    annotated_filename = f"{uuid.uuid4()}.jpg"
+    annotated_path = os.path.join(ANNOTATEDDIR, annotated_filename)
+    cv.imwrite(annotated_path, img)
+    return annotated_filename
