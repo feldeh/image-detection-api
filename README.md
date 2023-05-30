@@ -1,6 +1,12 @@
-# Image Detection using YOLO and FastAPI
+# Image Detection API
 
-This project provides a REST API server for detecting objects in an image using the YOLOv8 (You Only Look Once) object detection model implemented by Ultralytics. It uses a pre-trained model to recognize objects in images, then outputs the object type, its coordinates and confidence score.
+Image Detection API is a FastAPI based application that enables users to upload images and performs object detection on the uploaded images. The application uses the Ultralytics YOLOv8 model for object detection.
+
+## Features
+
+- Image upload and processing
+- Object detection using YOLOv8 model
+- Annotates images with detected object classes, their bounding boxes and confidence scores using OpenCV (Open Source Computer Vision Library)
 
 ## Getting Started
 
@@ -28,20 +34,29 @@ Build and start the docker container.
 docker-compose up
 ```
 
-### API Usage
+## API Reference
 
-The FastAPI server is exposed at port 80. You can interact with it using the following endpoints:
+You can interact with the API endpoints using the Swagger UI documentation. The Swagger UI is automatically generated and can be accessed from the /docs endpoint.
 
-- **/** - Health check. Returns "Ready" if the server is running.
-- **/api** - Runs the detection function and returns the result.
+#### Health check
 
-### Detection Result
+```
+  GET /
+```
 
-The detection function returns a list of detected objects in the image. Each object contains:
+Returns "Ready" if the server is running.
 
-- Object type: class of the detected object.
-- Coordinates: the bounding box coordinates of the detected object.
-- Confidence: the model's confidence score for the detected object.
+#### Upload image
+
+```
+  POST /upload
+```
+
+| Form Field | Type   | Description                        |
+| :--------- | :----- | :--------------------------------- |
+| `image`    | `file` | **Required**. Image file to upload |
+
+Upload an image file for processing. The image file should be in the form-data format with the key 'image'. After uploading, the image will be processed and a new image with detected object classes, their bounding boxes and their confidence scores will be written in the annotated folder. The endpoint returns the name of the processed image file.
 
 ## Built With
 
@@ -51,5 +66,5 @@ The detection function returns a list of detected objects in the image. Each obj
 
 ## Roadmap
 
-- [ ] Enhance the object detection API endpoint to return an image with drawn bounding boxes, object types, and confidence scores.
+- [ ] Enhance the object detection API endpoint to return the processed image.
 - [ ] Integrate a front-end user interface to interactively use the API and visualize the results.
