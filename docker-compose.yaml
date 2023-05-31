@@ -1,9 +1,20 @@
+version: "3.8"
+
 services:
-  app:
-    build: .
-    container_name: fastapi-server
-    command: uvicorn src.main:app --host 0.0.0.0 --port 80 --reload
+  server:
+    container_name: server
+    build: ./server
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8080 --reload
     ports:
-      - 80:80
+      - 8080:8080
     volumes:
-      - .:/image-detection
+      - ./server:/server
+
+  app:
+    container_name: app
+    build: ./app
+    command: npm run dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app:/app
