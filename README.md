@@ -13,7 +13,6 @@ Image Detection API is a FastAPI based application that enables users to upload 
 ### Prerequisites
 
 - Docker
-- Python
 
 ### Installing
 
