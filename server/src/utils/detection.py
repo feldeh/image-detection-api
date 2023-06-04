@@ -30,7 +30,7 @@ def process_image(image):
         cv.rectangle(image_array, (x, y), (x2, y2), (0, 0, 255), 10)
         cv.putText(image_array, str(class_names[cls]).capitalize(), (x, y - 20),
                    cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 4)
-        cv.putText(image_array, str(conf), (x + 100, y - 20),
+        cv.putText(image_array, str(conf), (x + 120, y - 20),
                    cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 4)
 
     annotated_filename = f"{uuid.uuid4()}.jpg"

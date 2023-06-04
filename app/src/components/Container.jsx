@@ -30,10 +30,8 @@ const Container = () => {
         if (response.ok) {
           let processedImageBlob = await response.blob();
           console.log(processedImageBlob);
-          // Convert the processed image blob into an object URL
           const objectURL = URL.createObjectURL(processedImageBlob);
 
-          // Set the processed image
           setProcessedImage(objectURL);
         } else {
           console.error("Failed to upload file. Status:", response.status);

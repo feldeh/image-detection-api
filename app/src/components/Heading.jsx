@@ -5,10 +5,12 @@ const Heading = () => {
         YOLO v8 Object Detection
       </h1>
       <p className="pt-5">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente illo
-        libero suscipit quas voluptates facilis laudantium molestiae impedit,
-        natus rem atque harum odit voluptatem explicabo rerum minima totam
-        assumenda? Quidem.
+        This app leverages Ultralytics YOLOv8 object detection model to identify
+        and locate objects within an image and classify them. It was trained to
+        detect 80 classes of objects.
+      </p>
+      <p className="w-full py-5 ">
+        Simply upload an image and it will return the annotated image.
       </p>
     </div>
   );
