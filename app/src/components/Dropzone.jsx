@@ -1,8 +1,11 @@
 "use client";
 
-const Dropzone = ({ setFile, file }) => {
+const Dropzone = ({ setFile, file, setfileURL, fileURL }) => {
   const handleChange = (e) => {
-    setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+
+    setFile(selectedFile);
+    setfileURL(URL.createObjectURL(selectedFile));
   };
 
   return (
@@ -11,8 +14,8 @@ const Dropzone = ({ setFile, file }) => {
         htmlFor="dropzone-file"
         className="flex flex-col items-center justify-center w-full bg-gray-800 border-2 border-gray-600 border-dashed rounded-lg cursor-pointer hover:bg-gray-700 hover:border-gray-500 "
       >
-        {file ? (
-          <img src={file} />
+        {fileURL ? (
+          <img src={fileURL} />
         ) : (
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             <svg

@@ -1,12 +1,7 @@
-from fastapi import APIRouter, UploadFile, File
+from fastapi import APIRouter, UploadFile, File, Response
 from src.utils.detection import process_image
-import uuid
-import traceback
-
-import os
-import io
-
 from PIL import Image
+import io
 
 
 IMAGEDIR = "src/images/uploaded/"
@@ -15,23 +10,15 @@ router = APIRouter()
 
 
 @router.post("/upload")
-async def upload_file(image: bytes = File(...)):
+async def upload_file(file: bytes = File(...)):
 
-    image_stream = io.BytesIO(image)
+    image = Image.open(io.BytesIO(file))
+    image.save("img.jpg")
 
-    print(image_stream.getvalue())
+    processed_image_array = process_image(image)
+    processed_image = Image.fromarray(processed_image_array)
 
-    # try:
+    processed_image_stream = io.BytesIO()
+    processed_image.save(processed_image_stream, format="JPEG")
 
-    #     image.filename = f"{uuid.uuid4()}.jpg"
-    #     contents = await image_stream.read()
-    #     image_path = os.path.join(IMAGEDIR, image.filename)
-
-    #     with open(f"{IMAGEDIR}{image.filename}", 'wb') as f:
-    #         f.write(contents)
-    #     annotated_filename = process_image(image_path)
-    #     return {"message": f"Successfully uploaded and processed {image.filename}",
-    #             "annotated_filename": annotated_filename}
-    # except Exception as e:
-    #     traceback.print_exc()
-    #     return {"message": f"There was an error uploading or processing the file: {str(e)}"}
+    return Response(content=processed_image_stream.getvalue(), media_type="image/jpeg")
