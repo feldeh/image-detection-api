@@ -8,11 +8,12 @@ import ProcessedImgPanel from "./ProcessedImgPanel";
 const Container = () => {
   const [file, setFile] = useState(null);
   const [fileURL, setfileURL] = useState(null);
-  const [processedImage, setProcessedImage] = useState(null);
+  const [processedImageURL, setProcessedImageURL] = useState(null);
 
   const handleClear = () => {
     setFile(null);
     setfileURL(null);
+    setProcessedImageURL(null);
   };
 
   const handleSubmit = async (e) => {
@@ -32,7 +33,7 @@ const Container = () => {
           console.log(processedImageBlob);
           const objectURL = URL.createObjectURL(processedImageBlob);
 
-          setProcessedImage(objectURL);
+          setProcessedImageURL(objectURL);
         } else {
           console.error("Failed to upload file. Status:", response.status);
         }
@@ -40,7 +41,7 @@ const Container = () => {
         console.error("Error uploading file:", error);
       }
     } else {
-      console.warn("No file selected.");
+      console.warn("No file selected");
     }
   };
 
@@ -53,12 +54,9 @@ const Container = () => {
           <Button text="Submit" isSubmit onClick={handleSubmit} />
         </div>
       </div>
-      <div
-        id="processed-image"
-        className="self-stretch w-full p-2 bg-gray-900 rounded-lg"
-      >
-        {processedImage ? (
-          <ProcessedImgPanel src={processedImage} />
+      <div className="self-stretch w-full p-2 bg-gray-900 rounded-lg">
+        {processedImageURL ? (
+          <ProcessedImgPanel src={processedImageURL} />
         ) : (
           <ProcessedImgPanel />
         )}

@@ -1,6 +1,6 @@
 "use client";
 
-const Dropzone = ({ setFile, file, setfileURL, fileURL }) => {
+const Dropzone = ({ setFile, setfileURL, fileURL }) => {
   const handleChange = (e) => {
     const selectedFile = e.target.files[0];
 
@@ -17,9 +17,8 @@ const Dropzone = ({ setFile, file, setfileURL, fileURL }) => {
         {fileURL ? (
           <img src={fileURL} />
         ) : (
-          <div className="flex flex-col items-center justify-center pt-5 pb-6">
+          <div className="flex flex-col items-center justify-center pt-5 pb-6 min-h-[150px]">
             <svg
-              aria-hidden="true"
               className="w-10 h-10 mb-3 text-gray-400"
               fill="none"
               stroke="currentColor"
@@ -37,7 +36,7 @@ const Dropzone = ({ setFile, file, setfileURL, fileURL }) => {
               <span className="font-semibold">Click to upload</span> or drag and
               drop
             </p>
-            <p className="text-xs text-gray-400 ">JPG</p>
+            <p className="text-xs text-gray-400 ">(Only JPG images)</p>
           </div>
         )}
         <input

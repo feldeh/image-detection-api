@@ -1,6 +1,6 @@
 const ProcessedImgPanel = ({ src }) => {
   return (
-    <div className="flex flex-col items-center self-stretch justify-center w-full h-full bg-gray-800 rounded-lg">
+    <div className="flex flex-col items-center self-stretch justify-center h-full bg-gray-800 rounded-lg min-h-[200px]">
       {src ? (
         <img src={src} alt="processed image" />
       ) : (
