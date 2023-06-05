@@ -36,7 +36,7 @@ const Dropzone = ({ setFile, setfileURL, fileURL }) => {
               <span className="font-semibold">Click to upload</span> or drag and
               drop
             </p>
-            <p className="text-xs text-gray-400 ">(Only JPG images)</p>
+            <p className="text-xs text-gray-400 ">JPG or PNG</p>
           </div>
         )}
         <input

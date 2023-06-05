@@ -1,6 +1,6 @@
 # Image Detection API
 
-Image Detection API is a FastAPI based application that enables users to upload images and performs object detection on the uploaded images. The application uses the Ultralytics YOLOv8 model for object detection.
+This is a program that leverages the Ultralytics YOLOv8 object detection model to accurately identify and locate objects within an image. It provides a user interface for uploading an image and obtaining an annotated version that highlights and classifies various objects.
 
 ## Features
 
@@ -14,25 +14,33 @@ Image Detection API is a FastAPI based application that enables users to upload 
 
 - Docker
 
-### Installing
+### Installation
 
-Clone the repository to your local machine.
+Clone the repository to your local machine:
 
 ```bash
 git clone https://github.com/feldeh/image-detection-api
 ```
 
-Navigate to the project's root directory.
+Navigate to the project's root directory:
 
 ```bash
 cd image-detection-api
 ```
 
-Build and start the docker container.
+### Running the Application
+
+To run the application, you need to spin up the Docker containers for both the server and the app:
 
 ```bash
 docker-compose up
 ```
+
+### App Usage
+
+1.  Open your browser and navigate to `localhost:3000`.
+2.  Upload an image.
+3.  Wait a few seconds until the processed image appears on the screen with the detected objects annotated.
 
 ## API Reference
 
@@ -54,9 +62,9 @@ Returns "Ready" if the server is running.
 
 | Form Field | Type   | Description                        |
 | :--------- | :----- | :--------------------------------- |
-| `image`    | `file` | **Required**. Image file to upload |
+| `file`     | `file` | **Required**. Image file to upload |
 
-Upload an image file for processing. The image file should be in the form-data format with the key 'image'. After uploading, the image will be processed and a new image with detected object classes, their bounding boxes and their confidence scores will be written in the annotated folder. The endpoint returns the name of the processed image file.
+Upload an image file for processing. The image file should be in the form-data format with the key 'file'.
 
 ## Built With
 
@@ -66,5 +74,5 @@ Upload an image file for processing. The image file should be in the form-data f
 
 ## Roadmap
 
-- [ ] Enhance the object detection API endpoint to return the processed image.
-- [ ] Integrate a front-end user interface to interactively use the API and visualize the results.
+- [x] Enhance the object detection API endpoint to return the processed image.
+- [x] Integrate a front-end user interface to interactively use the API and visualize the results.
