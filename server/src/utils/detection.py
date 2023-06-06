@@ -18,7 +18,6 @@ def process_image(image):
 
     classes = np.array(result.boxes.cls, dtype="int")
     class_names = np.array(list(result.names.values()))
-
     bboxes = np.array(result.boxes.xyxy, dtype="int")
     confidences = np.array(result.boxes.conf, dtype="float")
     rounded_confs = np.round(confidences, 2)

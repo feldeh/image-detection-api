@@ -3,9 +3,10 @@
 const Dropzone = ({ setFile, setfileURL, fileURL }) => {
   const handleChange = (e) => {
     const selectedFile = e.target.files[0];
-
-    setFile(selectedFile);
-    setfileURL(URL.createObjectURL(selectedFile));
+    if (selectedFile) {
+      setFile(selectedFile);
+      setfileURL(URL.createObjectURL(selectedFile));
+    }
   };
 
   return (

@@ -2,7 +2,6 @@ from fastapi import APIRouter, File, Response
 from src.utils.detection import process_image
 from PIL import Image
 import io
-import uuid
 
 
 IMAGEDIR = "src/images/uploaded/"
@@ -16,10 +15,6 @@ async def upload_file(file: bytes = File(...)):
     image = Image.open(io.BytesIO(file))
     image_rgb = image.convert("RGB")
     image_format = image.format.lower()
-
-    filename = f"{uuid.uuid4()}.{image_format}"
-
-    image_rgb.save(f"{IMAGEDIR}{filename}")
 
     processed_image_array = process_image(image_rgb)
     processed_image = Image.fromarray(processed_image_array)
