@@ -42,6 +42,7 @@ const Dropzone = ({ setFile, setfileURL, fileURL }) => {
         <input
           id="dropzone-file"
           type="file"
+          accept=".png, .jpg, .jpeg"
           className="hidden"
           onChange={handleChange}
         />
