@@ -9,6 +9,7 @@ const Container = () => {
   const [file, setFile] = useState(null);
   const [fileURL, setfileURL] = useState(null);
   const [processedImageURL, setProcessedImageURL] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClear = () => {
     setFile(null);
@@ -19,6 +20,7 @@ const Container = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (file) {
+      setIsLoading(true);
       console.log(file);
       const formData = new FormData();
       formData.append("file", file, file.name);
@@ -39,6 +41,8 @@ const Container = () => {
         }
       } catch (error) {
         console.error("Error uploading file:", error);
+      } finally {
+        setIsLoading(false);
       }
     } else {
       console.warn("No file selected");
@@ -55,11 +59,7 @@ const Container = () => {
         </div>
       </div>
       <div className="self-stretch w-full p-2 bg-gray-900 rounded-lg">
-        {processedImageURL ? (
-          <ProcessedImgPanel src={processedImageURL} />
-        ) : (
-          <ProcessedImgPanel />
-        )}
+        <ProcessedImgPanel isLoading={isLoading} src={processedImageURL} />
       </div>
     </div>
   );

@@ -31,8 +31,4 @@ def process_image(image):
         cv.putText(image_array, str(conf), (x + 115, y - 15),
                    cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
-    annotated_filename = f"{uuid.uuid4()}.jpg"
-    annotated_path = os.path.join(ANNOTATEDDIR, annotated_filename)
-    cv.imwrite(annotated_path, image_array)
-
     return image_array

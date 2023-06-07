@@ -30,7 +30,7 @@ cd image-detection-api
 
 ### Running the Application
 
-To run the application, you need to spin up the Docker containers for both the server and the app:
+To run the application, you need to spin up the server and app Docker containers:
 
 ```bash
 docker-compose up
