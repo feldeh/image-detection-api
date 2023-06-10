@@ -1,6 +1,9 @@
 # Image Detection API
 
-This is a program that leverages the Ultralytics YOLOv8 object detection model to accurately identify and locate objects within an image. It provides a user interface for uploading an image and obtaining an annotated version that highlights and classifies various objects.
+This application leverages the Ultralytics YOLOv8 object detection model to accurately identify and locate objects within an image. It provides a user interface for uploading an image and obtaining an annotated version that highlights and classifies various objects.
+
+<img width="873" alt="image" src="https://github.com/feldeh/image-detection-api/assets/104257852/c9c57688-e8c0-4c15-b033-052104f36807">
+
 
 ## Features
 
